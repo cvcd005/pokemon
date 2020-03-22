@@ -3,7 +3,7 @@ import React from 'react';
 import './App.scss';
 
 const App = () => {
-  return <div>This is Pokedex</div>;
+  return <div prop={1} prop2={2} prop3={3} prop43={32} proppp={123123}>This is Pokedex</div>;
 };
 
 export default App;
