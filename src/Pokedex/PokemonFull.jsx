@@ -11,7 +11,7 @@ const PokemonFull = observer((props) => {
   const closeButton = (evt) => {
     evt.preventDefault();
     const { history } = props;
-    history.push('/pokemon');
+    history.push('/pokemon/');
   }
 
   return (

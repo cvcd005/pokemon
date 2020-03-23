@@ -13,7 +13,7 @@ const PokemonLite = observer((props) => {
     const { history } = props; /* достаем объект хистори из WithRouter */ 
     const { addPokemon } = props;
     addPokemon(props.pokemon);
-    history.push(`/pokemon/${name}`);
+    history.push(`${name}`);
   }
 
   return (
