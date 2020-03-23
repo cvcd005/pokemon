@@ -18,9 +18,9 @@ const App = observer((props) => {
   return (
     <BrowserRouter >
       <Col xs={20} md={16} md={{ span: 16, offset: 2 }}>
-        <Route path="/" exact render={() => <Filter filterPokemons={props.store.filterPokemons} t={props.store.typesPokemon}/> } />
-        <Route path="/" exact render={() => <PokemonList list={props.store.pokemons} store={props.store}/> }  /> 
-        <Route exact path="/:name" render={()=> <PokemonFull pokemon={props.store.pokemon}></PokemonFull>} />
+        <Route path="/pokemon" exact render={() => <Filter filterPokemons={props.store.filterPokemons} t={props.store.typesPokemon}/> } />
+        <Route path="/pokemon" exact render={() => <PokemonList list={props.store.pokemons} store={props.store}/> }  /> 
+        <Route exact path="/pokemon/:name" render={()=> <PokemonFull pokemon={props.store.pokemon}></PokemonFull>} />
         </Col>
     </BrowserRouter>
   );
