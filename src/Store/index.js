@@ -40,7 +40,11 @@ class Pokedex {
   };
 
   typesPokemon = async (ar = []) => {
-    if (ar.length > 2 || ar.length === 0) {
+    if (ar.length === 0) {
+      this.getList();
+      return 1;
+    }
+    if (ar.length > 2) {
       return [];
     }
     const results = await Promise.all(ar.map(el => getType(el)));
@@ -48,11 +52,11 @@ class Pokedex {
     const first = cr[0].pokemon.map(el => el.pokemon.name) || [];
     if (ar.length === 1) {
       this.pokemonList = first.map(el => ({ name: el }));
-      return 'aga';
+    } else {
+      const second = cr[1].pokemon.map(el => el.pokemon.name) || [];
+      const res = first.filter(el => second.includes(el));
+      this.pokemonList = res.map(el => ({ name: el }));
     }
-    const second = cr[1].pokemon.map(el => el.pokemon.name) || [];
-    const res = first.filter(el => second.includes(el));
-    this.pokemonList = res.map(el => ({ name: el }));
     return 'aga';
   };
 
