@@ -32,21 +32,28 @@ class Pokedex {
 
   filterPokemons = name => {
     if (!name) {
-      return this.getList();
+      return this.createPokemons();
     }
     const ar = this.pokemonList.slice();
     this.pokemonList = [...ar.filter(el => el.name.includes(name))];
-    this.createPokemons();
-    return 1;
+    return this.createPokemons();
   };
 
   typesPokemon = async (ar = []) => {
-    if (ar.length > 2) {
+    if (ar.length > 2 || ar.length === 0) {
       return [];
     }
     const results = await Promise.all(ar.map(el => getType(el)));
     const cr = results.map(el => el.data);
-    return cr;
+    const first = cr[0].pokemon.map(el => el.pokemon.name) || [];
+    if (ar.length === 1) {
+      this.pokemonList = first.map(el => ({ name: el }));
+      return 'aga';
+    }
+    const second = cr[1].pokemon.map(el => el.pokemon.name) || [];
+    const res = first.filter(el => second.includes(el));
+    this.pokemonList = res.map(el => ({ name: el }));
+    return 'aga';
   };
 
   setOffset = value => {

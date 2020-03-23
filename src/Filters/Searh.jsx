@@ -39,10 +39,10 @@ const MyCheckBox = (props) => {
 }
 
 const Filter = (props) => {
-  const onFinish = values => {
+  const onFinish = async values => {
     const {filterPokemons, t} = props;
-    filterPokemons(values.name);
-    t(values.checkboxg);
+    await t(values.checkboxg);
+    await filterPokemons(values.name);
     console.log('Received values of form: ', values);
   };
   
