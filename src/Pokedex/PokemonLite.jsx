@@ -11,7 +11,7 @@ const PokemonLite = observer((props) => {
 
   const openFullPokemonCard = () => { 
     const { history } = props; /* достаем объект хистори из WithRouter */ 
-    const { changeModal, addPokemon } = props;
+    const { addPokemon } = props;
     addPokemon(props.pokemon);
     history.push(`pokemon/${name}`);
   }
