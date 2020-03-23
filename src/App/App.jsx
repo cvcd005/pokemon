@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import {observer} from 'mobx-react';
+import {Col} from 'antd';
 
+import { PokemonList, PokemonFull } from '../Pokedex';
+import Filter from '../Filters';
+
+import 'antd/dist/antd.css';
 import './App.scss';
 
-const App = () => {
-  return <div prop={1} prop2={2} prop3={3} prop43={32} proppp={123123} adsfasdfas={123}>This is Pokedex</div>;
-};
+const App = observer((props) => { 
+  
+  useEffect(() => { //componentDidMount create first full pokemons list
+    props.store.getList();
+  }, [])
+
+  return (
+    <BrowserRouter >
+      <Col xs={20} md={16} md={{ span: 16, offset: 2 }}>
+        <Route path="/" exact render={() => <Filter filterPokemons={props.store.filterPokemons} t={props.store.typesPokemon}/> } />
+        <Route path="/" exact render={() => <PokemonList list={props.store.pokemons} store={props.store}/> }  /> 
+        <Route exact path="/:name" render={()=> <PokemonFull pokemon={props.store.pokemon}></PokemonFull>} />
+        </Col>
+    </BrowserRouter>
+  );
+});
 
 export default App;

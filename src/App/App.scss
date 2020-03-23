@@ -1,0 +1,77 @@
+@import-normalize;
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/opensans.woff) format("woff");
+  font-style: normal;
+  font-weight:300;
+  font-display:swap;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/opensansbold.woff) format("woff");
+  font-style: normal;
+  font-weight:700;
+  font-display:swap;
+}
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Open Sans', Arial,  sans-serif;
+  font-size: 16px;
+}
+.content-wrapper {
+  width: 1024px;
+  margin: 0 auto;
+}
+.pokemon-list {
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.pokemon-lite {
+  min-width: 200px;
+  min-height: 200px;
+  background: lightblue;
+  margin-right: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  
+  &:hover {
+    transform: matrix(1,0,0,1,0,-8);
+  }
+  &_types {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 30%;
+    margin-top: 10px;
+  }
+  &_title {
+    font-size: 18px;
+    text-align: center;
+  }
+  &_body {
+    height: 60%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  &_stats {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+.closeButton{ 
+  background:transparent;
+  border:1px solid black;
+  border-radius: 50%;
+  display:inline-block;
+}
